@@ -16,6 +16,8 @@ function isAnagram(s: string, t: string): boolean {
         }
     }
 
-    return Object.values(hashTable).find((count) => count !== 0) === undefined;
+    return Object
+        .values(hashTable)
+        .every((n) => n === 0);
 };
 
