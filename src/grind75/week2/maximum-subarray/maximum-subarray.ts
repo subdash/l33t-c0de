@@ -1,9 +1,27 @@
-onst maxSubArray = (nums: number[]): number => {
+const maxSubArray = (nums: number[]): number => {
+    // Kadane's algorithm
+    let currSum = 0;
+    let maxSum = -(Math.pow(10, 4));
+
+    for (const num of nums) {
+        currSum += num;
+        if (currSum > maxSum) {
+            maxSum = currSum;
+        }
+        if (currSum < 0) {
+            currSum = 0;
+        }
+    }
+
+    return maxSum;
+};
+/*
+const maxSubArray = (nums: number[]): number => {
     let localMax = nums[0];
     let finalMax = localMax;
     for (const num of nums.slice(1)) {
         // If the current number is greater than the previous max,
-        // then it is the new local max.
+        // then it is the new local max.        
         localMax = Math.max(num, localMax + num);
         if (localMax > finalMax) {
             finalMax = localMax;
@@ -11,6 +29,7 @@ onst maxSubArray = (nums: number[]): number => {
     }
     return finalMax;
 }
+*/
 
 /*
 // Works for all but 10 test cases where we get this error:
